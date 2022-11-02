@@ -6,10 +6,12 @@ import models.common.ObjectRepository;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import pages.DemoQaPracticePage;
 import utils.Printer;
 import utils.ScreenCaptureUtility;
 import utils.WebUtilities;
 import utils.driver.Driver;
+
 import java.util.List;
 
 import static utils.WebUtilities.Color.*;
@@ -17,6 +19,10 @@ import static utils.WebUtilities.Color.*;
 public class CommonSteps extends WebUtilities {
 
     public Scenario scenario;
+
+
+    DemoQaPracticePage demoPage = new DemoQaPracticePage();
+
 
     Driver browser = new Driver();
     Printer log = new Printer(CommonSteps.class);
@@ -529,4 +535,66 @@ public class CommonSteps extends WebUtilities {
                 wait.until(ExpectedConditions.attributeContains(element, attributeName, attributeValue))
         );
     }
+
+
+    @Given("Fill {} of {} and write the {}")
+    public void fill_first_name_input_of_demo_qa_practice_page_and_write_the_name(String inputName, String pageName, String input) {
+        fill(inputName, pageName, input);
+    }
+
+    @Given("Select {} from {}")
+    public void select_button_from_web_page(String button, String pageName) {
+        try {
+            click(button, pageName);
+
+        } catch (NullPointerException e) {
+            clickIfPresent(button, pageName);
+        }
+    }
+
+    @Given("Upload {} from {}")
+    public void upload_file_from_local_desktop(String fileName, String directory) {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+
+        // WebElement uploadButton = getElementFromPage("uploadPictureButton", "DemoQaPracticePage", new ObjectRepository());
+        uploadFile(demoPage.uploadPictureButton, directory, fileName);
+    }
+
+    @Given("Select a state {}")
+    public void select_one_of_the_state(String state) {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+        demoPage.selectStateDropdown.click();
+        demoPage.selectState(state);
+
+    }
+
+    @Given("Select a city {}")
+    public void select_one_of_the_city(String city) {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+        demoPage.selectCityDropdown.click();
+        demoPage.selectCity(city);
+
+    }
+
+
+    @Given("Set the dateOfBirthInput on the DemoQaPracticePage with text: {string}")
+    public void set_the_date_of_birth_input_on_the_demo_qa_practice_page_with_text_nov(String date) {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+
+        demoPage.setBirthDate(date);
+    }
+
+    @Given("Press the enter key")
+    public void press_the_enter_key() {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+        demoPage.pressEnter();
+    }
+
+    @Given("Scroll to submit button")
+    public void scroll_to_submit_button() {
+        DemoQaPracticePage demoPage = new DemoQaPracticePage();
+        demoPage.scrollIntoViewByXpath("//*[@id='submit']");
+
+    }
+
 }

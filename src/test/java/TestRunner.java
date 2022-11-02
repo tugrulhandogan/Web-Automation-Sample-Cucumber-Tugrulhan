@@ -9,9 +9,12 @@ import org.junit.runner.RunWith;
         features = {"src/test/java/features"},
         plugin = {"json:target/reports/Cucumber.json"},
         glue = {"steps"},
-        publish = true
+        publish = true,
+        dryRun = false,
+        tags = "@DemoQaTest"
 )
 public class TestRunner {
     @AfterClass
     public static void finalSequence(){new ShutdownSequence().publishReports(System.getProperty("cucumber.filter.tags"));}
 }
+
