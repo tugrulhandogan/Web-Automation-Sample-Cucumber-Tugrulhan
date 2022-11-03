@@ -28,9 +28,8 @@ Feature: Demo Qa test automation scenarios
 
     Examples:
 
-      | firstName | lastName | userEmail            | gender    | mobileNumber | dateOfBirth | subjects | hobbies | file     | specifiedDirectory                  | currentAddress            | state | city  |
-      | Jack      | London   | jacklondon@gmail.com | maleInput | 1234567890   | 05 Nov 2022 | Physics  | reading | Logo.png | C:\Users\Tugrulhan\OneDrive\Desktop | London Street 234, 5435KL | NCR   | Delhi |
-
+      | firstName | lastName | userEmail            | gender    | mobileNumber | dateOfBirth | subjects | hobbies | file      | specifiedDirectory  | currentAddress            | state | city  |
+      | Jack      | London   | jacklondon@gmail.com | maleInput | 1234567890   | 05 Nov 2022 | Physics  | reading | view.jpeg | src\test\resources\ | London Street 234, 5435KL | NCR   | Delhi |
 
 
 

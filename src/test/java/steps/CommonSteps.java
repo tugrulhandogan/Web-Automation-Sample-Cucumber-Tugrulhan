@@ -12,6 +12,7 @@ import utils.ScreenCaptureUtility;
 import utils.WebUtilities;
 import utils.driver.Driver;
 
+import java.io.File;
 import java.util.List;
 
 import static utils.WebUtilities.Color.*;
@@ -538,12 +539,12 @@ public class CommonSteps extends WebUtilities {
 
 
     @Given("Fill {} of {} and write the {}")
-    public void fill_first_name_input_of_demo_qa_practice_page_and_write_the_name(String inputName, String pageName, String input) {
+    public void fillTheField(String inputName, String pageName, String input) {
         fill(inputName, pageName, input);
     }
 
     @Given("Select {} from {}")
-    public void select_button_from_web_page(String button, String pageName) {
+    public void selectButtonFromPage(String button, String pageName) {
         try {
             click(button, pageName);
 
@@ -555,9 +556,8 @@ public class CommonSteps extends WebUtilities {
     @Given("Upload {} from {}")
     public void upload_file_from_local_desktop(String fileName, String directory) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
-
-        // WebElement uploadButton = getElementFromPage("uploadPictureButton", "DemoQaPracticePage", new ObjectRepository());
-        uploadFile(demoPage.uploadPictureButton, directory, fileName);
+        File file = new File(directory);
+        uploadFile(demoPage.uploadPictureButton, file.getAbsolutePath(), fileName);
     }
 
     @Given("Select a state {}")
@@ -569,32 +569,29 @@ public class CommonSteps extends WebUtilities {
     }
 
     @Given("Select a city {}")
-    public void select_one_of_the_city(String city) {
+    public void selectOptionFromDropdown(String city) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         demoPage.selectCityDropdown.click();
         demoPage.selectCity(city);
 
     }
 
-
     @Given("Set the dateOfBirthInput on the DemoQaPracticePage with text: {string}")
-    public void set_the_date_of_birth_input_on_the_demo_qa_practice_page_with_text_nov(String date) {
+    public void setTheDateOfBirth(String date) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
-
         demoPage.setBirthDate(date);
     }
 
     @Given("Press the enter key")
-    public void press_the_enter_key() {
+    public void pressTheEnterKey() {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         demoPage.pressEnter();
     }
 
     @Given("Scroll to submit button")
-    public void scroll_to_submit_button() {
+    public void scrollToSubmitButton() {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         demoPage.scrollIntoViewByXpath("//*[@id='submit']");
-
     }
 
 }
