@@ -22,8 +22,6 @@ public class CommonSteps extends WebUtilities {
     public Scenario scenario;
 
 
-    DemoQaPracticePage demoPage = new DemoQaPracticePage();
-
 
     Driver browser = new Driver();
     Printer log = new Printer(CommonSteps.class);
