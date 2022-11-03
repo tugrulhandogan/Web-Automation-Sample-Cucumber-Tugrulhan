@@ -542,7 +542,7 @@ public class CommonSteps extends WebUtilities {
     }
 
     @Given("Select {} from {}")
-    public void selectButtonFromPage(String button, String pageName) {
+    public void clickButtonFromPage(String button, String pageName) {
         try {
             click(button, pageName);
 
@@ -552,14 +552,14 @@ public class CommonSteps extends WebUtilities {
     }
 
     @Given("Upload {} from {}")
-    public void upload_file_from_local_desktop(String fileName, String directory) {
+    public void uploadFile(String fileName, String directory) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         File file = new File(directory);
         uploadFile(demoPage.uploadPictureButton, file.getAbsolutePath(), fileName);
     }
 
     @Given("Select a state {}")
-    public void select_one_of_the_state(String state) {
+    public void selectStateFromDropdown(String state) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         demoPage.selectStateDropdown.click();
         demoPage.selectState(state);
@@ -567,7 +567,7 @@ public class CommonSteps extends WebUtilities {
     }
 
     @Given("Select a city {}")
-    public void selectOptionFromDropdown(String city) {
+    public void selectCityFromDropdown(String city) {
         DemoQaPracticePage demoPage = new DemoQaPracticePage();
         demoPage.selectCityDropdown.click();
         demoPage.selectCity(city);
